@@ -10,7 +10,7 @@ export type Group = {
     owner: string
 }
 
-type Task = {
+export type Task = {
     name: string,
     id: string,
     group: string,
