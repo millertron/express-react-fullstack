@@ -9,14 +9,15 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.ts', '.tsx', '.js']
     },
     devServer: {
         historyApiFallback: true
     },
     module: {
         rules: [{
-            test: /\.jsx?/,
+            test: /\.(ts|js)x?/,
+            exclude: /node_modules/,
             loader: 'babel-loader'
         }]
     }
