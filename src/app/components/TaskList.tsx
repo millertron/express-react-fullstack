@@ -2,7 +2,7 @@ import React from 'react'
 import { DefaultState, Task } from "../../types/types"
 import { connect } from "react-redux"
 import { Dispatch } from "redux"
-import { requestTaskCreation } from "../store/mutation"
+import { requestTaskCreation } from "../store/mutations"
 
 type Props = {
     name: string,
