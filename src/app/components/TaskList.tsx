@@ -2,7 +2,7 @@ import React from 'react'
 import { DefaultState, Task } from "../../types/types"
 import { connect } from "react-redux"
 import { Dispatch } from "redux"
-import { requestTaskCreation } from "../store/mutations"
+import * as mutations from "../store/mutations"
 
 type Props = {
     name: string,
@@ -11,8 +11,7 @@ type Props = {
     createNewTask?: Function
 }
 
-export const TaskList = ({name, tasks, id, createNewTask}: Props) => {
-    const taskList = tasks ? tasks : []
+export const TaskList = ({name, tasks = [], id, createNewTask}: Props) => {
     const button = createNewTask ? <button onClick={() => createNewTask(id)}>Add New</button> : ""
     return (
         <div>
@@ -20,7 +19,7 @@ export const TaskList = ({name, tasks, id, createNewTask}: Props) => {
                 {name}
             </h3>
             <div>
-                {taskList.map(task => (<div key={task.id}>{task.name}</div>))}
+                {tasks.map(task => (<div key={task.id}>{task.name}</div>))}
             </div>
             {button}
         </div>
@@ -39,8 +38,7 @@ const mapStateToProps = (state: DefaultState, ownProps: Props): Props => {
 const mapDispatchToProps = (dispatch: Dispatch, ownProps: Props) => {
     return {
         createNewTask(id: string) {
-            console.log("Creating new task...", id)
-            dispatch(requestTaskCreation(id))
+            dispatch(mutations.requestTaskCreation(id))
         }
     }
 }
