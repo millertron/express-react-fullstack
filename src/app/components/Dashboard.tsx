@@ -7,7 +7,7 @@ type Props = {
     groups: Array<Group>
 }
 
-export const Dashboard = ( { groups }: Props ) => (
+export const Dashboard = ( {groups}: Props ) => (
     <div>
         <h2>Le Dashboard!</h2>
         {groups.map(group => (
