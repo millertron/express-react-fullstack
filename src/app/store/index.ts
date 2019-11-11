@@ -6,10 +6,11 @@ import createSagaMiddleWare from 'redux-saga'
 
 const sagaMiddleware = createSagaMiddleWare();
 import * as sagas from './sagas.mock'
+import { Task, Comment, Group, User } from "../../types/types"
 
 export const store = createStore(
     combineReducers({
-        tasks(tasks = defaultState.tasks, action) {
+        tasks(tasks:Task[] = defaultState.tasks, action) :Task[]{
             if (action.type === mutations.CREATE_TASK) {
                 return [...tasks, {
                     id: action.taskId,
@@ -21,13 +22,13 @@ export const store = createStore(
             }
             return tasks
         },
-        comments(comments = defaultState.comments) {
+        comments(comments:Comment[] = defaultState.comments) :Comment[] {
             return comments;
         },
-        groups(groups = defaultState.groups) {
+        groups(groups:Group[] = defaultState.groups) :Group[] {
             return groups;
         },
-        users(users = defaultState.users) {
+        users(users:User[] = defaultState.users) :User[]{
             return users;
         }
     }),
@@ -35,5 +36,6 @@ export const store = createStore(
 )
 
 for (let saga in sagas) {
+    // @ts-ignore
     sagaMiddleware.run(sagas[saga])
 }

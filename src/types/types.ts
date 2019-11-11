@@ -1,4 +1,4 @@
-type User = {
+export type User = {
     id: string,
     name: string,
     friends: Array<string>
@@ -18,7 +18,7 @@ export type Task = {
     isComplete: boolean,
 }
 
-type Comment = {
+export type Comment = {
     owner: string,
     id: string,
     task: string,
